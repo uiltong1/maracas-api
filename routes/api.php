@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::resource('tales', TalesController::class);
-Route::resource('medias', MediasController::class);
+Route::middleware(['basicAuth'])->group(function () {
+    Route::resource('tales', TalesController::class);
+    Route::resource('medias', MediasController::class);
+});

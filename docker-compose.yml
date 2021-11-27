@@ -12,6 +12,10 @@ services:
       - ./:/var/www/html
     ports:
       - 8080:80
+    env_file:
+      - .env.example
+    depends_on: 
+      - db
   db:
     image: mysql:5.7
     container_name: maracas-db

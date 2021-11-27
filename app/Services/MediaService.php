@@ -33,7 +33,7 @@ class MediaService implements MediaInterface{
         $media = Media::find($id);
         $this->validateMediaExist($media);
     
-        $file_path = storage_path() . '\app\\'. $media->path;
+        $file_path = storage_path() . '/app/'. $media->path;
         if(file_exists($file_path)){
             return $file_path;
         }
@@ -74,7 +74,7 @@ class MediaService implements MediaInterface{
     private function deleteFile($path)
     {
         if($path){
-            $file_path = storage_path() . '\app\\'. $path;
+            $file_path = storage_path() . '/app/'. $path;
             if(file_exists($file_path)){
                 File::delete($file_path);
             }

@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  app:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    image: maracas
+    container_name: maracas-api
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 8080:80
+  db:
+    image: mysql:5.7
+    container_name: maracas-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: maracas_db
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_PASSWORD: 1234
+      MYSQL_USER: maracas
+  
+networks:
+  maracas:
+    driver: bridge

@@ -8,4 +8,9 @@ docker-compose up -d --build &&
 docker exec -i maracas-api bash -c "cd /var/www/html && composer install" &&
 
 # EXECUTE MIGRATIONS DATABASE
-docker exec -i maracas-api bash -c "cd /var/www/html && php artisan migrate"
+docker exec -i maracas-api bash -c "cd /var/www/html && php artisan migrate --seed" &&
+
+# EXECUTE TESTS
+docker exec -i maracas-api bash -c "cd /var/www/html && php artisan test"
+
+echo "Aplicação configurada."

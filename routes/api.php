@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::middleware(['basicAuth'])->group(function () {
+Route::middleware(['auth.basic.once'])->group(function () {
     Route::resource('tales', TalesController::class);
     Route::resource('medias', MediasController::class);
 });

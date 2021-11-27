@@ -73,7 +73,7 @@ class MediasController extends Controller
                 'title' => 'Error',
                 'message' => $e->getMessage(),
                 'line' => $e->getLine()
-            ],  Response::HTTP_BAD_REQUEST);
+            ], $e->getCode() ??  Response::HTTP_BAD_REQUEST);
         }
     }
 

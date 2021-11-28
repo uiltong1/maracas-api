@@ -11,6 +11,6 @@ docker exec -i maracas-api bash -c "cd /var/www/html && composer install" &&
 docker exec -i maracas-api bash -c "cd /var/www/html && php artisan migrate --seed" &&
 
 # EXECUTE TESTS
-docker exec -i maracas-api bash -c "cd /var/www/html && php artisan test"
+docker exec -i maracas-api bash -c "cd /var/www/html && php artisan test --testsuite=Feature"
 
 echo "Aplicação configurada."
